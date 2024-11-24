@@ -14,9 +14,9 @@ return new class extends Migration
             $table->string('institution_name');
             $table->string('role');
             $table->timestamp('started_at');
-            $table->timestamp('finished_at');
-            $table->string('description');
-            $table->string('location');
+            $table->timestamp('finished_at')->nullable();
+            $table->string('description')->nullable();
+            $table->string('location')->nullable();
             $table->timestamps();
         });
     }
