@@ -77,7 +77,8 @@ class EducationController extends Controller
     public function edit(string $id)
     {
         $education = Education::findOrFail($id);
-        return view('educations.edit', compact('education'));
+        $skills = Skill::all();
+        return view('educations.edit', compact('education', 'skills'));
     }
 
     /**
