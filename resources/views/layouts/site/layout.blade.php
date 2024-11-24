@@ -18,6 +18,13 @@
         <script src="{{ mix('js/app.js') }}" defer></script>
     @endif
 
+    <style>
+        .line-end {
+            float: right;
+            text-align: right;
+        }
+    </style>
+
 </head>
 <body class="font-sans antialiased h-full bg-yellow-100">
 <!--
