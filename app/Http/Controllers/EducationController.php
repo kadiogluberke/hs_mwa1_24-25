@@ -86,12 +86,27 @@ class EducationController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'price' => 'required|numeric',
+        $request->validate([
+            'institution_name' => ['required', 'string', 'max:255'],
+            'programme' => 'required|string|max:255',
+            'started_at' => 'required|date',
+            'finished_at' => 'nullable|date|after_or_equal:start_date',
+            'location' => 'nullable|string|max:255',
+            'description' => 'nullable|string',
+            'grade' => 'nullable|string|max:10',
         ]);
+
         $education = Education::findOrFail($id);
-        $education->update($validatedData);
+
+        $education->update($request->except('skills'));
+
+        // Sync the selected skills
+        if ($request->has('skills')) {
+            $education->skills()->sync($request->input('skills'));
+        } else {
+            $education->skills()->sync([]); // Clear skills if none selected
+        }
+
         return redirect()->route('educations.index')->with('success', 'Education updated successfully!');
     }
 
