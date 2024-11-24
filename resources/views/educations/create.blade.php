@@ -82,7 +82,23 @@
                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-yellow-500"
                     >
                 </div>
-    
+
+                <!-- Skills Select Box -->
+                <div class="mb-4">
+                    <label for="skills" class="block text-gray-700 text-sm font-bold mb-2">Skills:</label>
+                    <select 
+                        id="skills" 
+                        name="skills[]" 
+                        multiple 
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                    >
+                        @foreach($skills as $skill)
+                            <option value="{{ $skill->id }}">{{ $skill->name }}</option>
+                        @endforeach
+                    </select>
+                    <p class="text-sm text-gray-500 mt-2">Hold down the Ctrl (Windows) or Command (Mac) key to select multiple skills.</p>
+                </div>
+        
                 <!-- Submit Button -->
                 <div class="flex items-center justify-between">
                     <button 

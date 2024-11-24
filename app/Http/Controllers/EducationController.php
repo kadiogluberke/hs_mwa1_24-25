@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Education;
+use App\Models\Skill;
 use Illuminate\Http\Request;
 
 class EducationController extends Controller
@@ -20,7 +21,8 @@ class EducationController extends Controller
      */
     public function create()
     {
-        return view('educations.create');
+        $skills = Skill::all();
+        return view('educations.create', compact('skills'));
     }
 
     /**

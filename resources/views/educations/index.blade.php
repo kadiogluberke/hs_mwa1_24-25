@@ -25,5 +25,11 @@
             {{ $education->description }}
         </div>
 
+        <div>
+            @foreach($education->skills as $skill)
+                <span class="bg-gray-200 text-gray-800 px-2 py-1 rounded-full text-xs">{{$skill->name}}</span>
+            @endforeach
+        </div>
+
     @endforeach
 </x-site-layout>
