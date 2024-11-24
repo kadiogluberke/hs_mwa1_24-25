@@ -30,12 +30,36 @@ class EducationController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'price' => 'required|numeric',
+
+        //dd($request->all());
+
+        $request->validate([
+            'institution' => ['required', 'string', 'max:255'],
+            'programme' => 'required|string|max:255',
+            'start_date' => 'required|date',
+            'finish_date' => 'nullable|date|after_or_equal:start_date',
+            'location' => 'nullable|string|max:255',
+            'description' => 'nullable|string',
+            'grade' => 'nullable|string|max:10',
         ]);
-        Education::create($validatedData);
-        return redirect()->route('educations.index')->with('success', 'Education created successfully!');
+    
+        // Create Education
+        $education = Education::create([
+            'institution_name' => $request->institution,
+            'programme'=> $request->programme,
+            'started_at'=> $request->start_date,
+            'finished_at'=> $request->finish_date,
+            'location'=> $request->location,
+            'description'=> $request->description,
+            'grade'=> $request->grade,
+        ]);
+    
+        // Attach Skills (if any are selected)
+        if ($request->has('skills')) {
+            $education->skills()->attach($request->skills);
+        }
+    
+        return redirect()->route('educations.index')->with('success', 'Education added successfully!');
     }
 
     /**
