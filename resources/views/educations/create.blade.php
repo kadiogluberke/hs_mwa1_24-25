@@ -110,15 +110,17 @@
                     <p class="text-sm text-gray-500 mt-2">Hold down the Ctrl (Windows) or Command (Mac) key to select multiple skills.</p>
                 </div>
         
-                <!-- Submit Button -->
-                <div class="flex items-center justify-between">
-                    <button 
-                        type="submit" 
-                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                    >
-                        Save
-                    </button>
-                </div>
+                @auth
+                    <!-- Submit Button -->
+                    <div class="flex items-center justify-between">
+                        <button 
+                            type="submit" 
+                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                        >
+                            Save
+                        </button>
+                    </div>
+                @endauth
             </form>
         </div>
     </body>

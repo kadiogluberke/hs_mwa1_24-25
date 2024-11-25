@@ -37,19 +37,21 @@
                <!-- Back to List -->
             <a href="{{ route('educations.index') }}" class="bg-blue-500 text-white px-4 py-2 rounded">Back to List</a>
             
-            <!-- Edit Button -->
-            <a href="{{ route('educations.edit', $education->id) }}" class="bg-yellow-500 text-white px-4 py-2 rounded">
-                Edit
-            </a>
-            
-            <!-- Delete Button -->
-            <form action="{{ route('educations.destroy', $education->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this education?');" class="inline">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded">
-                    Delete
-                </button>
-            </form>
+            @auth
+                <!-- Edit Button -->
+                <a href="{{ route('educations.edit', $education->id) }}" class="bg-yellow-500 text-white px-4 py-2 rounded">
+                    Edit
+                </a>
+                
+                <!-- Delete Button -->
+                <form action="{{ route('educations.destroy', $education->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this education?');" class="inline">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded">
+                        Delete
+                    </button>
+                </form>
+            @endauth
         </div>
 
     </body>

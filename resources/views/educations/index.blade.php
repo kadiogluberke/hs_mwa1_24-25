@@ -10,8 +10,9 @@
         </div>
     @endif
 
-
-    <a href="{{ route('educations.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded mb-4 inline-block">Add New Education</a>
+    @auth
+        <a href="{{ route('educations.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded mb-4 inline-block">Add New Education</a>
+    @endauth
         
     @foreach($educations as $education)
         <a href="{{ route('educations.show', $education->id) }}">
