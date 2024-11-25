@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Education;
 use App\Models\Skill;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EducationController extends Controller
 {
@@ -30,6 +31,10 @@ class EducationController extends Controller
      */
     public function store(Request $request)
     {
+
+        if (!Auth::check()) {
+            abort(403); // Forbidden
+        }
 
         //dd($request->all());
 
@@ -86,6 +91,10 @@ class EducationController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        if (!Auth::check()) {
+            abort(403); // Forbidden
+        }
+
         $request->validate([
             'institution_name' => ['required', 'string', 'max:255'],
             'programme' => 'required|string|max:255',
@@ -115,12 +124,16 @@ class EducationController extends Controller
      */
     public function destroy(string $id)
     {
+        if (!Auth::check()) {
+            abort(403); // Forbidden
+        }
+
         $education = Education::findOrFail($id);
 
         $education->skills()->detach();
 
         $education->delete();
-        
+
         return redirect()->route('educations.index')->with('success', 'Education deleted successfully!');
     }
 }
