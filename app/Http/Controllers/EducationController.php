@@ -116,7 +116,11 @@ class EducationController extends Controller
     public function destroy(string $id)
     {
         $education = Education::findOrFail($id);
+
+        $education->skills()->detach();
+
         $education->delete();
+        
         return redirect()->route('educations.index')->with('success', 'Education deleted successfully!');
     }
 }
