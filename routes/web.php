@@ -6,9 +6,21 @@ use App\Models\Education;
 use Illuminate\Support\Facades\Route;
 
 
+require __DIR__.'/auth.php';
+
 Route::get('/', \App\Http\Controllers\WellcomeController::class);
 
-Route::resource('educations', EducationController::class);
+// Protected actions
+Route::resource('educations', EducationController::class)
+    ->except(['index', 'show'])
+    ->middleware('auth');
+
+// Public actions
+Route::get('educations', [EducationController::class, 'index'])->name('educations.index');
+Route::get('educations/{education}', [EducationController::class, 'show'])->name('educations.show');
+
+
+
 
 
 
@@ -23,4 +35,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+
