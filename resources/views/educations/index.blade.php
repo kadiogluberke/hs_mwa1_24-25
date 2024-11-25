@@ -18,7 +18,7 @@
             
             <!-- Institution Name -->
             <div class="text-lg font-bold mt-1">
-                {{ $education->institution_name }}
+                {{ $education->institution_name }}, {{ $education->location }}
                 <span class="line-end text-gray-500 text-sm">
                     {{ $education->started_at }} - {{ $education->finished_at ?? 'Present' }}
                 </span>

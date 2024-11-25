@@ -5,7 +5,7 @@
         <!-- <h1 class="text-4xl font-bold mb-6">Education Details</h1> -->
         <!-- Institution Name -->
         <div class="text-2xl font-bold">
-            {{ $education->institution_name }}
+            {{ $education->institution_name }}, {{ $education->location }}
             <span class="line-end text-gray-500 text-lg">
                 {{ $education->started_at }} - {{ $education->finished_at ?? 'Present' }}
             </span>
