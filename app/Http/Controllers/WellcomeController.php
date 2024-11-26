@@ -10,7 +10,7 @@ class WellcomeController extends Controller
     public function __invoke()
     {
         $user = User::first();
-        return view('welcome')->with('user', $user);
-        //return view('welcome', compact('user'));
+        //return view('welcome')->with('user', $user);
+        return view('welcome', compact('user'));
     }
 }
