@@ -14,6 +14,7 @@ class EducationController extends Controller
     public function index()
     {
         $educations = Education::all();
+        $educations->load('skills');
         return view('educations.index', compact('educations'));
     }
 
@@ -73,6 +74,7 @@ class EducationController extends Controller
     public function show(string $id)
     {
         $education = Education::findOrFail($id);
+        $education->load('skills');
         return view('educations.show', compact('education'));
     }
 
@@ -83,6 +85,7 @@ class EducationController extends Controller
     {
         $education = Education::findOrFail($id);
         $skills = Skill::all();
+        $education->load('skills');
         return view('educations.edit', compact('education', 'skills'));
     }
 
