@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use App\Models\User;
 
 class ProfileController extends Controller
 {
@@ -30,6 +31,19 @@ class ProfileController extends Controller
 
         if ($request->user()->isDirty('email')) {
             $request->user()->email_verified_at = null;
+        }
+
+        $request->validate([
+            'profile_picture' => ['nullable','file','image','mimes:jpg,jpeg,png','max:4096'],
+        ]);
+
+        /** @var \App\Models\User $user */
+        $user = Auth::user();
+
+        // Handle profile picture upload
+        if ($request->has('profile_picture')) {
+            //$user->media->first()->delete();
+            $user->addMedia($request->file('profile_picture'))->toMediaCollection('profile_pictures');
         }
 
         $request->user()->save();
