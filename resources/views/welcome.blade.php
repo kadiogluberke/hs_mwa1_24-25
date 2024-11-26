@@ -7,6 +7,11 @@
         </p>
     </section>
 
+    @if ($user->getFirstMediaUrl('profile_pictures'))
+        <img src="{{ $user->getFirstMediaUrl('profile_pictures') }}" alt="Profile Picture" class="w-32 h-32">
+    @endif
+
+
     <section>
         <h2 class="text-2xl font-semibold mb-4">Contact Information</h2>
         <ul class="list-disc pl-6 space-y-2">
