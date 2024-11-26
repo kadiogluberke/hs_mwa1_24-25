@@ -7,8 +7,10 @@
         </p>
     </section>
 
-    @if ($user->getFirstMediaUrl('profile_pictures'))
+    @if ($user->media->first() !== null)
         <img src="{{ $user->getFirstMediaUrl('profile_pictures') }}" alt="Profile Picture" class="w-32 h-32">
+    @else
+        <img src="{{asset('images/default.webp')}}"/>
     @endif
 
 
