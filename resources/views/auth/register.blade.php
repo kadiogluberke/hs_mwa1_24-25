@@ -40,14 +40,9 @@
         </div>
 
         <!-- Profile Picture -->
-        <div>
-            <x-input-label for="profile_picture" :value="__('Profile Picture')" class="mt-1 block w-full"/>
-            <div>
-                <input id="profile_picture" type="file" name="profile_picture" class="mt-2">
-                @php $name='profile_picture'; @endphp
-                <!-- include('components.form._form-error-handling'); -->
-            </div>
-        </div>
+        <x-profile-image-upload>
+
+        </x-profile-image-upload>
 
         <div class="flex items-center justify-end mt-4">
             <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}">
