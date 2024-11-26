@@ -42,7 +42,7 @@ class ProfileController extends Controller
 
         // Handle profile picture upload
         if ($request->has('profile_picture')) {
-            //$user->media->first()->delete();
+            $user->media->first()?->delete();
             $user->addMedia($request->file('profile_picture'))->toMediaCollection('profile_pictures');
         }
 

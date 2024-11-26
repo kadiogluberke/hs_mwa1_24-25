@@ -43,7 +43,7 @@ class RegisteredUserController extends Controller
         ]);
 
         if ($request->has('profile_picture')) {
-            $user->media->first()->delete();
+            $user->media->first()?->delete();
             $user->addMediaFromRequest('profile_picture')->toMediaCollection('profile_picture');
         }
 
