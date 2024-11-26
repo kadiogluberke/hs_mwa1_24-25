@@ -3,11 +3,9 @@
     <section class="mb-8 flex flex-col md:flex-row items-center md:items-start md:space-x-8">
         <!-- Profile Picture -->
         <div class="flex-shrink-0">
-            @if ($user->media->first() !== null)
-                <img src="{{ $user->getFirstMediaUrl('profile_pictures', 'thumb') }}" alt="Profile Picture" class="w-40 h-40 rounded-full object-cover shadow-lg">
-            @else
-                <img src="{{ asset('images/default.webp') }}" alt="Default Profile Picture" class="w-40 h-40 rounded-full object-cover shadow-lg">
-            @endif
+            
+            <img src="{{ $image }}" alt="Profile Picture" class="w-40 h-40 rounded-full object-cover shadow-lg">
+            
         </div>
     
         <!-- About Me -->
