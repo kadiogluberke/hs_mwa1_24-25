@@ -22,7 +22,7 @@ return new class extends Migration
             $table->text('linkedin_link')->nullable();
             $table->text('resume_link')->nullable();
             $table->text('about_me')->nullable();
-            $table->text('profile_picture')->nullable();
+            //$table->text('profile_picture')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
