@@ -16,7 +16,7 @@ return new class extends Migration
             $table->timestamp('started_at');
             $table->timestamp('finished_at')->nullable();
             $table->string('location')->nullable();
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
             $table->string('grade')->nullable();
             $table->timestamps();
         });

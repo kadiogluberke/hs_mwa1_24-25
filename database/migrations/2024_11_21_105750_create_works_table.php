@@ -15,7 +15,7 @@ return new class extends Migration
             $table->string('role');
             $table->timestamp('started_at');
             $table->timestamp('finished_at')->nullable();
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
             $table->string('location')->nullable();
             $table->timestamps();
         });
