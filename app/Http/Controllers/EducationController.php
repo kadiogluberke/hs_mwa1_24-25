@@ -5,6 +5,8 @@ use App\Models\Education;
 use App\Models\Skill;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
+
 
 class EducationController extends Controller
 {
@@ -13,7 +15,11 @@ class EducationController extends Controller
      */
     public function index()
     {
-        $educations = Education::all();
+        $educations = Education::all()->map(function ($education) {
+            $education->started_at = Carbon::parse($education->started_at)->format('M - Y');
+            $education->finished_at = Carbon::parse($education->finished_at)->format('M - Y');
+            return $education;
+        });
         $educations->load('skills');
         return view('educations.index', compact('educations'));
     }
@@ -66,6 +72,9 @@ class EducationController extends Controller
     public function show(string $id)
     {
         $education = Education::findOrFail($id);
+        $education->started_at = Carbon::parse($education->started_at)->format('M - Y');
+        $education->finished_at = Carbon::parse($education->finished_at)->format('M - Y');
+
         $education->load('skills');
         return view('educations.show', compact('education'));
     }
