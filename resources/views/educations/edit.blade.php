@@ -4,15 +4,7 @@
         <div class="container mx-auto mt-10">
             <h1 class="text-4xl font-bold mb-6">Edit Education</h1>
 
-            @if ($errors->any())
-                <div class="bg-red-100 text-red-600 p-4 rounded mb-4">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
+            <x-error-message/>
 
             <form action="{{ route('educations.update', $education->id) }}" method="POST" class="bg-yellow-50 shadow-md rounded px-8 pt-6 pb-8">
                 @csrf
