@@ -1,7 +1,7 @@
 <div class="mb-4">
     <label for="{{ $name }}" class="block text-gray-700 text-sm font-bold mb-2">{{ $label }}:</label>
     <input 
-        type={{ $type }} 
+        type="{{ $type }}"
         id="{{ $name }}" 
         name="{{ $name }}" 
         value="{{ old($name , $value) }}" 

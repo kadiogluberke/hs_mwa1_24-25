@@ -2,16 +2,16 @@
     <x-action-layout-edit title="Edit Education" :action="route('educations.update', $education->id)">
 
                 <!-- Institution Name -->
-                <x-form-text name="institution_name" label="Institution" value="{{ $education->institution_name }}" />
+                <x-form-text name="institution_name" label="Institution" :value="$education->institution_name" />
                 
                 <!-- Programme -->
                 <x-form-text name="programme" label="Programme" value="{{ $education->programme }}" />
                 
                 <!-- Start Date -->
-                <x-form-text name="started_at" label="Start Date" type='date' value="{{ $education->started_at }}" />
+                <x-form-text name="started_at" label="Start Date" type='date' :value="$education->started_at" />
                 
                 <!-- Finish Date -->
-                <x-form-text name="finished_at" label="Finish Date" type='date' value="{{ $education->finished_at }}" />
+                <x-form-text name="finished_at" label="Finish Date" type='date' :value="$education->finished_at" />
                 
                 <!-- Location -->
                 <x-form-text name="location" label="Location " value="{{ $education->location }}" />
