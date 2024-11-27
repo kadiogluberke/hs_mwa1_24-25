@@ -31,7 +31,7 @@
                 <!-- Skills Select Box -->
                 <x-skill-box 
                     :skills="$skills" 
-                    :selectedSkills="[]" 
+                    :selectedSkills="old('skills', [])"
                     label="Skills" 
                     name="skills[]" 
                     id="skills"

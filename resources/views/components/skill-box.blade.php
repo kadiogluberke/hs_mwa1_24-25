@@ -3,7 +3,7 @@
     <select id="{{ $id }}" name="{{ $name }}" multiple class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight">
         @foreach ($skills as $skill)
             <option value="{{ $skill->id }}" 
-                {{ in_array($skill->id, $selectedSkills) ? 'selected' : '' }}>
+                {{ in_array($skill->id, old(str_replace('[]', '', $name), $selectedSkills)) ? 'selected' : '' }}>
                 {{ $skill->name }}
             </option>
         @endforeach

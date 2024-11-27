@@ -31,7 +31,7 @@
                 <!-- Skills -->
                 <x-skill-box 
                     :skills="$skills" 
-                    :selectedSkills="$education->skills->pluck('id')->toArray()" 
+                    :selectedSkills="old('skills', $education->skills->pluck('id')->toArray())"
                     label="Skills" 
                     name="skills[]" 
                     id="skills"
