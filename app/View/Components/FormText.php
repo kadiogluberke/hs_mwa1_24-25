@@ -14,6 +14,7 @@ class FormText extends Component
     public function __construct(
         public string $name,
         public string $label,
+        public string $type = "text",
         public ?string $value = null,
         public ?string $placeholder = null,
     )
