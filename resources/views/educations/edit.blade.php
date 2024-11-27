@@ -1,15 +1,6 @@
 <x-site-layout title='Edit Education'>
+    <x-action-layout-edit title="Edit Education" :action="route('educations.update', $education->id)">
 
-    <body class="bg-gray-100 text-gray-800 font-sans">
-        <div class="container mx-auto mt-10">
-            <h1 class="text-4xl font-bold mb-6">Edit Education</h1>
-
-            <x-error-message/>
-
-            <form action="{{ route('educations.update', $education->id) }}" method="POST" class="bg-yellow-50 shadow-md rounded px-8 pt-6 pb-8">
-                @csrf
-                @method('PUT')
-                
                 <!-- Institution Name -->
                 <x-form-text name="institution_name" label="Institution" value="{{ $education->institution_name }}" />
                 
@@ -45,16 +36,7 @@
                     name="skills[]" 
                     id="skills"
                 />
-                
-                @auth
-                    <!-- Update Button -->
-                    <div class="flex items-center justify-between">
-                        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Update</button>
-                    </div>
-                @endauth
-            </form>
-        </div>
-    </body>
     
+    </x-action-layout-edit>
 
 </x-site-layout>
