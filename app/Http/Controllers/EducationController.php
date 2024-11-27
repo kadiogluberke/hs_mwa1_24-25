@@ -40,25 +40,17 @@ class EducationController extends Controller
         //dd($request->all());
 
         $request->validate([
-            'institution' => ['required', 'string', 'max:255'],
+            'institution_name' => ['required', 'string', 'max:255'],
             'programme' => 'required|string|max:255',
-            'start_date' => 'required|date',
-            'finish_date' => 'nullable|date|after_or_equal:start_date',
+            'started_at' => 'required|date',
+            'finished_at' => 'nullable|date|after_or_equal:started_at',
             'location' => 'nullable|string|max:255',
             'description' => 'nullable|string',
             'grade' => 'nullable|string|max:10',
         ]);
     
         // Create Education
-        $education = Education::create([
-            'institution_name' => $request->institution,
-            'programme'=> $request->programme,
-            'started_at'=> $request->start_date,
-            'finished_at'=> $request->finish_date,
-            'location'=> $request->location,
-            'description'=> $request->description,
-            'grade'=> $request->grade,
-        ]);
+        $education = Education::create($request->except('skills'));
     
         // Attach Skills (if any are selected)
         if ($request->has('skills')) {
@@ -102,7 +94,7 @@ class EducationController extends Controller
             'institution_name' => ['required', 'string', 'max:255'],
             'programme' => 'required|string|max:255',
             'started_at' => 'required|date',
-            'finished_at' => 'nullable|date|after_or_equal:start_date',
+            'finished_at' => 'nullable|date|after_or_equal:started_at',
             'location' => 'nullable|string|max:255',
             'description' => 'nullable|string',
             'grade' => 'nullable|string|max:10',

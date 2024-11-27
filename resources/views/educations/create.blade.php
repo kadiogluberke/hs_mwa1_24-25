@@ -9,10 +9,10 @@
                 <x-form-text name="programme" label="Program" />
     
                 <!-- Start Date Field -->
-                <x-form-text name="start_date" label="Start Date" type="date" />
+                <x-form-text name="started_at" label="Start Date" type="date" />
     
                 <!-- Finish Date Field -->
-                <x-form-text name="finish_date" label="Finish Date" type="date"/>
+                <x-form-text name="finished_at" label="Finish Date" type="date"/>
     
                 <!-- Location Field -->
                 <x-form-text name="location" label="Location" />
