@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 
 require __DIR__.'/auth.php';
 
-Route::get('/', \App\Http\Controllers\WellcomeController::class);
+Route::get('/', \App\Http\Controllers\WellcomeController::class)->name('welcome');
 
 // Protected actions
 Route::resource('educations', EducationController::class)
