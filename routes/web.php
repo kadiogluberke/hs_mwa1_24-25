@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\WorkController;
 use App\Models\Education;
 use Illuminate\Support\Facades\Route;
 
@@ -19,6 +20,7 @@ Route::resource('educations', EducationController::class)
 Route::get('educations', [EducationController::class, 'index'])->name('educations.index');
 Route::get('educations/{education}', [EducationController::class, 'show'])->name('educations.show');
 
+Route::resource('works', WorkController::class);
 
 
 
