@@ -30,8 +30,7 @@ class WorkController extends Controller
     public function create()
     {
         $skills = Skill::all();
-        $taskPlaceholders = range(0, 4);
-        return view('works.create', compact('skills', 'taskPlaceholders'));
+        return view('works.create', compact('skills'));
     }
 
     /**
@@ -42,7 +41,6 @@ class WorkController extends Controller
         if (!Auth::check()) {
             abort(403); // Forbidden
         }
-        // dd($request->all());
 
         $request->validate([
             'institution_name' => ['required', 'string', 'max:255'],
@@ -66,7 +64,6 @@ class WorkController extends Controller
             $work->skills()->attach($request->skills);
         }
 
-        // dd($request);
 
         $work->tasks()->create([
             'name' => $task['name'],

@@ -43,7 +43,6 @@
                 id="task_name"
                 name="task[name]" 
                 label="Task Name" 
-                placeholder="Enter task name (required)" 
             />
 
             <!-- Task Description -->
@@ -51,7 +50,6 @@
                 id="task_description"
                 name="task[description]" 
                 label="Task Description" 
-                placeholder="Enter task description (optional)" 
                 rows="2" 
             />
         </div>
