@@ -81,8 +81,11 @@ class TaskController extends Controller
     public function edit(string $id)
     {
         $task = Task::findOrFail($id);
-        $works = Work::all(); // Fetch all works for the dropdown
-        return view('tasks.edit', compact('task', 'works'));
+        $workId = $task->work_id;
+        $work = Work::findOrFail($workId); 
+        $skills = Skill::all();
+
+        return view('tasks.edit', compact('task', 'work', 'workId','skills'));
     }
 
     /**
@@ -101,9 +104,18 @@ class TaskController extends Controller
         ]);
 
         $task = Task::findOrFail($id);
-        $task->update($request->all());
+        $task->update($request->except('skills'));
 
-        return redirect()->route('tasks.index')->with('success', 'Task updated successfully!');
+        // Sync the selected skills
+        if ($request->has('skills')) {
+            $task->skills()->sync($request->input('skills'));
+        } else {
+            $task->skills()->sync([]);
+        }
+
+        
+        return redirect()->route('works.edit', $request->work_id)
+                        ->with('success', 'Task updated successfully!');
     }
 
     /**
