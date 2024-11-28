@@ -50,12 +50,25 @@
                             <p class="text-sm text-gray-600">{{ $task->description }}</p>
                         </div>
                         
-                        <!-- Edit Task Button -->
+                        <!-- Action Buttons -->
                         @auth
-                            <a href="{{ route('tasks.edit', $task->id) }}" 
-                                class="bg-blue-500 text-white text-sm px-3 py-1 rounded">
-                                Edit Task
-                            </a>
+                            <div class="flex space-x-2">
+                                <!-- Edit Task Button -->
+                                <a href="{{ route('tasks.edit', $task->id) }}" 
+                                    class="bg-blue-500 text-white text-sm px-3 py-1 rounded">
+                                    Edit Task
+                                </a>
+                                <!-- Delete Task Button -->
+                                <form action="{{ route('tasks.destroy', $task->id) }}" method="POST" 
+                                      onsubmit="return confirm('Are you sure you want to delete this task?');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" 
+                                            class="bg-red-500 text-white text-sm px-3 py-1 rounded">
+                                        Delete Task
+                                    </button>
+                                </form>
+                            </div>
                         @endauth
                     </div>
                 @empty
@@ -63,6 +76,7 @@
                 @endforelse
             </div>
         </div>
+        
         
         
 
