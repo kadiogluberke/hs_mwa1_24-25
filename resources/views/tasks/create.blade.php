@@ -24,7 +24,7 @@
         <!-- Work ID -->
         @if (isset($workId))
             <input type="hidden" name="work_id" value="{{ $workId }}">
-            <p class="text-sm text-gray-600">Task will be associated with Work ID: {{ $workId }}</p>
+            <p class="text-sm text-gray-600">Task will be associated with Work : {{ $work->institution_name }} - {{ $work->role }}</p>
         @else
             <x-form-select name="work_id" label="Associated Work" :options="$works->pluck('name', 'role')" />
         @endif
