@@ -1,6 +1,8 @@
 <x-site-layout title='Edit Work'>
     <x-action-layout-edit title="Edit Work" :action="route('works.update', $work->id)">
 
+        <x-succes-message/>
+
         <!-- Institution Name -->
         <x-form-text name="institution_name" label="Institution" :value="$work->institution_name" />
 
@@ -52,10 +54,12 @@
         </div>
 
         @auth
-        <a href="{{ route('tasks.create', ['work_id' => $work->id]) }}" 
-            class="bg-blue-500 text-white px-4 py-2 rounded mt-4">
-            Add Task
-         </a>
+            <div class="flex items-center justify-between mt-3">
+                <a href="{{ route('tasks.create', ['work_id' => $work->id]) }}" 
+                    class="bg-blue-500 text-white px-4 py-2 rounded">
+                    Add Task
+                </a>
+            </div>
          @endauth
 
     </x-action-layout-edit>

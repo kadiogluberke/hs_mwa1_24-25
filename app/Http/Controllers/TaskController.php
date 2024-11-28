@@ -24,10 +24,18 @@ class TaskController extends Controller
      */
     public function create(Request $request)
     {
-        $workId = $request->get('work_id'); 
-        $work = Work::findOrFail($workId);
+        if (!($request->has('work_id'))){
+            if (!Auth::check()) {
+                abort(404); 
+            }
+        }
+
         $works = Work::all(); 
         $skills = Skill::all(); 
+
+        $workId = $request->get('work_id'); 
+        $work = Work::findOrFail($workId);
+
         return view('tasks.create', compact('works', 'workId', 'skills', 'work'));
     }
 
