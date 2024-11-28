@@ -41,17 +41,30 @@
             <h3 class="text-lg font-semibold mb-2">Tasks</h3>
             <div class="space-y-2">
                 @forelse ($work->tasks as $task)
-                    <div class="p-4 border rounded-md bg-gray-50">
-                        <!-- Task Name -->
-                        <h4 class="text-md font-medium text-gray-800">{{ $task->name }}</h4>
-                        <!-- Task Description -->
-                        <p class="text-sm text-gray-600">{{ $task->description }}</p>
+                    <div class="p-4 border rounded-md bg-gray-50 flex justify-between items-center">
+                        <!-- Task Details -->
+                        <div>
+                            <!-- Task Name -->
+                            <h4 class="text-md font-medium text-gray-800">{{ $task->name }}</h4>
+                            <!-- Task Description -->
+                            <p class="text-sm text-gray-600">{{ $task->description }}</p>
+                        </div>
+                        
+                        <!-- Edit Task Button -->
+                        @auth
+                            <a href="{{ route('tasks.edit', $task->id) }}" 
+                                class="bg-blue-500 text-white text-sm px-3 py-1 rounded">
+                                Edit Task
+                            </a>
+                        @endauth
                     </div>
                 @empty
                     <p class="text-gray-500">No tasks assigned to this work.</p>
                 @endforelse
             </div>
         </div>
+        
+        
 
         @auth
             <div class="flex items-center justify-between mt-3">
