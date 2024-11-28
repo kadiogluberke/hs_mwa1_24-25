@@ -17,13 +17,23 @@ Route::resource('educations', EducationController::class)
     ->except(['index', 'show'])
     ->middleware('auth');
 
+Route::resource('works', WorkController::class)
+    ->except(['index', 'show'])
+    ->middleware('auth');
+
+Route::resource('tasks', TaskController::class)
+    ->except(['index', 'show'])
+    ->middleware('auth');
+
 // Public actions
 Route::get('educations', [EducationController::class, 'index'])->name('educations.index');
 Route::get('educations/{education}', [EducationController::class, 'show'])->name('educations.show');
 
-Route::resource('works', WorkController::class);
+Route::get('works', [WorkController::class, 'index'])->name('works.index');
+Route::get('works/{work}', [WorkController::class, 'show'])->name('works.show');
 
-Route::resource('tasks', TaskController::class);
+Route::get('tasks', [TaskController::class, 'index'])->name('tasks.index');
+Route::get('tasks/{task}', [TaskController::class, 'show'])->name('tasks.show');
 
 
 
