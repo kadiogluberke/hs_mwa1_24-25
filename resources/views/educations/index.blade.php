@@ -7,7 +7,7 @@
     @endauth
         
     @foreach($educations as $education)
-        <a href="{{ route('educations.show', $education->id) }}">
+        <a href="{{ route('educations.show', $education->id) }}" class="block border-b border-gray-200 py-4">
             
             <!-- Institution Name -->
             <div class="text-lg font-bold mt-1">
