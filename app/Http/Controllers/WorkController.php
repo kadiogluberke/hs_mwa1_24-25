@@ -30,7 +30,8 @@ class WorkController extends Controller
     public function create()
     {
         $skills = Skill::all();
-        return view('works.create', compact('skills'));
+        $taskPlaceholders = range(0, 4);
+        return view('works.create', compact('skills', 'taskPlaceholders'));
     }
 
     /**
@@ -41,6 +42,7 @@ class WorkController extends Controller
         if (!Auth::check()) {
             abort(403); // Forbidden
         }
+        // dd($request->all());
 
         $request->validate([
             'institution_name' => ['required', 'string', 'max:255'],
@@ -51,13 +53,25 @@ class WorkController extends Controller
             'description' => ['nullable', 'string'],
         ]);
 
+        $task = $request->input('task');
+        if (empty($task['name'])) {
+            return redirect()->back()->withErrors(['task.name' => 'Task name is required'])->withInput();
+        }
+
         // Create Work
-        $work = Work::create($request->except('skills'));
+        $work = Work::create($request->except('skills', 'task'));
 
         // Attach Skills (if any are selected)
         if ($request->has('skills')) {
             $work->skills()->attach($request->skills);
         }
+
+        // dd($request);
+
+        $work->tasks()->create([
+            'name' => $task['name'],
+            'description' => $task['description'],
+        ]);
 
         return redirect()->route('works.index')->with('success', 'Work added successfully!');
     }

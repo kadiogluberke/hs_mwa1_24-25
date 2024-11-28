@@ -9,7 +9,9 @@ class Task extends Model
 {
     use HasFactory;
 
-    protected $fillable = [];
+    // protected $fillable = [];
+
+    protected $guarded = [];
 
 
     public function skills()
