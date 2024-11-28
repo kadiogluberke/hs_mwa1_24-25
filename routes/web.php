@@ -3,6 +3,7 @@
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WorkController;
+use App\Http\Controllers\TaskController;
 use App\Models\Education;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +22,8 @@ Route::get('educations', [EducationController::class, 'index'])->name('education
 Route::get('educations/{education}', [EducationController::class, 'show'])->name('educations.show');
 
 Route::resource('works', WorkController::class);
+
+Route::resource('tasks', TaskController::class);
 
 
 
