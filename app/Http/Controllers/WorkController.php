@@ -91,10 +91,10 @@ class WorkController extends Controller
      */
     public function edit(string $id)
     {
-        $work = Work::findOrFail($id);
-        $skills = Skill::all();
-        $work->load('skills');
-        return view('works.edit', compact('work', 'skills'));
+        $work = Work::findOrFail($id); 
+        $skills = Skill::all(); 
+        $work->load(['skills', 'tasks']); 
+        return view('works.edit', compact('work', 'skills')); 
     }
 
     /**
