@@ -1,15 +1,14 @@
-<x-site-layout title='New Task'>
+<x-site-layout title="New Task">
+    <x-action-layout-create title="Create Task" :action="route('tasks.store')">
 
-    <x-action-layout-create title="Add New Task" :action="route('tasks.store')">
+        <!-- Task Name -->
+        <x-form-text name="name" label="Task Name" />
 
-        <!-- Name Field -->
-        <x-form-text name="name" label="Name" />
-
-        <!-- Description Field -->
+        <!-- Task Description -->
         <x-form-text-area 
             id="description" 
             name="description" 
-            label="Description" 
+            label="Task Description" 
             rows="4" 
         />
 
@@ -22,6 +21,14 @@
             id="skills"
         />
 
-    </x-action-layout-create>
+        <!-- Work ID -->
+        @if (isset($workId))
+            <input type="hidden" name="work_id" value="{{ $workId }}">
+            <p class="text-sm text-gray-600">Task will be associated with Work ID: {{ $workId }}</p>
+        @else
+            <x-form-select name="work_id" label="Associated Work" :options="$works->pluck('name', 'role')" />
+        @endif
 
+    </x-action-layout-create>
 </x-site-layout>
+

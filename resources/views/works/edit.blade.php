@@ -35,7 +35,7 @@
         />
 
         <!-- Tasks Section -->
-        <div id="tasks-section" class="mt-4">
+        <div id="tasks-section" class="mt-3">
             <h3 class="text-lg font-semibold mb-2">Tasks</h3>
             <div class="space-y-2">
                 @forelse ($work->tasks as $task)
@@ -50,6 +50,13 @@
                 @endforelse
             </div>
         </div>
+
+        @auth
+        <a href="{{ route('tasks.create', ['work_id' => $work->id]) }}" 
+            class="bg-blue-500 text-white px-4 py-2 rounded mt-4">
+            Add Task
+         </a>
+         @endauth
 
     </x-action-layout-edit>
 </x-site-layout>

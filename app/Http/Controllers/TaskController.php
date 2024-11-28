@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Task;
 use App\Models\Work;
+use App\Models\Skill;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,10 +22,12 @@ class TaskController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        $works = Work::all(); // Fetch all works for the dropdown
-        return view('tasks.create', compact('works'));
+        $workId = $request->get('work_id'); 
+        $works = Work::all(); 
+        $skills = Skill::all(); 
+        return view('tasks.create', compact('works', 'workId', 'skills'));
     }
 
     /**
@@ -42,9 +45,16 @@ class TaskController extends Controller
             'work_id' => 'required|exists:works,id',
         ]);
 
-        Task::create($request->all());
 
-        return redirect()->route('tasks.index')->with('success', 'Task added successfully!');
+        $task = Task::create($request->except('skills'));
+    
+        // Attach Skills (if any are selected)
+        if ($request->has('skills')) {
+            $task->skills()->attach($request->skills);
+        }
+
+        return redirect()->route('works.edit', $request->work_id)
+                     ->with('success', 'Task added successfully!');
     }
 
     /**
