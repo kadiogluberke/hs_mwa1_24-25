@@ -11,7 +11,7 @@
                 
             <!-- Institution Name -->
             <div class="text-lg font-bold mt-1">
-                {{ $task->name }}
+                {{ $task->name }} - {{ $task->work->institution_name }}, {{ $task->work->role }}
             </div>
     
             <!-- Description -->
