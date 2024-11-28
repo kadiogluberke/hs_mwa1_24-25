@@ -38,23 +38,15 @@
         <div class="mb-6">
             <label for="task" class="block text-gray-700 text-sm font-bold mb-2">Task:</label>
             
-            <!-- Task Name -->
-            <x-form-text 
-                id="task_name"
-                name="task[name]" 
-                label="Task Name" 
-            />
+            <x-form-text name="task_name" label="Task Name" />
 
-            <!-- Task Description -->
             <x-form-text-area 
-                id="task_description"
-                name="task[description]" 
+                id="task_description" 
+                name="task_description" 
                 label="Task Description" 
                 rows="2" 
             />
         </div>
-
-
 
     </x-action-layout-create>
 

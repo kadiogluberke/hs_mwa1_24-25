@@ -49,15 +49,13 @@ class WorkController extends Controller
             'finished_at' => ['nullable', 'date', 'after_or_equal:started_at'],
             'location' => ['nullable', 'string', 'max:255'],
             'description' => ['nullable', 'string'],
+            'task_name' => ['required', 'string', 'max:255'],
+            'task_description' => ['nullable', 'string'],
         ]);
 
-        $task = $request->input('task');
-        if (empty($task['name'])) {
-            return redirect()->back()->withErrors(['task.name' => 'Task name is required'])->withInput();
-        }
 
         // Create Work
-        $work = Work::create($request->except('skills', 'task'));
+        $work = Work::create($request->except('skills', 'task_name', 'task_description'));
 
         // Attach Skills (if any are selected)
         if ($request->has('skills')) {
@@ -66,8 +64,8 @@ class WorkController extends Controller
 
 
         $work->tasks()->create([
-            'name' => $task['name'],
-            'description' => $task['description'],
+            'name' => $request->task_name,
+            'description' => $request->task_description,
         ]);
 
         return redirect()->route('works.index')->with('success', 'Work added successfully!');
