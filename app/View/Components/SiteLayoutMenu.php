@@ -5,6 +5,7 @@ namespace App\View\Components;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
+use App\Models\User;
 
 class SiteLayoutMenu extends Component
 {
@@ -21,6 +22,11 @@ class SiteLayoutMenu extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('layouts.site.menu');
+        $user = User::first(); 
+        $profileImage = $user && $user->getFirstMediaUrl('profile_pictures', 'thumb') 
+                        ? $user->getFirstMediaUrl('profile_pictures', 'thumb') 
+                        : asset('images/default.webp');
+
+        return view('layouts.site.menu', compact('profileImage'));
     }
 }
