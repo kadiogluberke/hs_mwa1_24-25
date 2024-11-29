@@ -20,9 +20,13 @@
             <!-- Programme and Grade -->
             <div class="text-sm text-gray-700 mt-2">
                 {{ $education->programme }}
-                <span class="line-end text-gray-500">
-                    <strong>Grade:</strong> {{ $education->grade }}
-                </span>
+                @if($education->grade!=null)
+                    <span class="line-end text-gray-500">
+                        <strong>Grade:</strong> {{ $education->grade }}
+                    </span>
+                    
+                @endif
+                
             </div>
 
             <!-- Description -->
