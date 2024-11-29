@@ -36,6 +36,8 @@
             id="skills"
         />
 
+    </x-action-layout-edit>
+
         <!-- Tasks Section -->
         <div id="tasks-section" class="mt-3">
             <h3 class="text-lg font-semibold mb-2">Tasks</h3>
@@ -89,7 +91,6 @@
             </div>
          @endauth
 
-    </x-action-layout-edit>
 </x-site-layout>
 
 
