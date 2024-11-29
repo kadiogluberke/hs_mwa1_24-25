@@ -23,3 +23,10 @@ Nothing but the normal ones
 - if using sqlite: do execute `touch database/database.sqlite`
 - and then migrate the tables: `php artisan migrate`
 - and then seed date: `php artisan db:seed`.
+
+## Editing Website
+- In order to editing website you need to login 
+- Go to the page with url `/login`
+- Email: test@example.com
+- Password: password 
+- After logged in you can edit your personal information and also other items like educations, works and tasks
