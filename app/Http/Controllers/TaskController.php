@@ -128,8 +128,10 @@ class TaskController extends Controller
         }
 
         $task = Task::findOrFail($id);
+        $workId = $task->work_id;
+        $work = Work::findOrFail($workId); 
         $task->delete();
 
-        return redirect()->route('tasks.index')->with('success', 'Task deleted successfully!');
+        return redirect()->route('works.edit', $workId)->with('success', 'Task deleted successfully!');
     }
 }
