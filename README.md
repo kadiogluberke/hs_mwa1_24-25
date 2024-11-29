@@ -30,3 +30,21 @@ Nothing but the normal ones
 - Email: test@example.com
 - Password: password 
 - After logged in you can edit your personal information and also other items like educations, works and tasks
+
+## Potential Improvments 
+- menu should be made suitable for mobile 
+- footer should be edited 
+- Controllers and actions for Projects, Articles and Skills 
+- delete and re-install application in new directory for checking ready for prodution or not 
+- Maybe Pagination for skills, taks, articles and projects 
+- Maybe filters for skills etc.
+- There should be only one user so after deploy register route should be deleted 
+- Maybe Implementing rich text 
+- Maybe Language change 
+
+## Bugs 
+There are small bugs in the website 
+- Grade label is displayed whether there is a grade or not. 
+- If Finish Date is empty, it takes 'Present' string but because of casting it seems as present's date
+- When you return to work edit from after editing, creating or deleting tasks, there will be no flash 
+- Work Edit Form quite strange because of Html does not allow Nested Forms 
