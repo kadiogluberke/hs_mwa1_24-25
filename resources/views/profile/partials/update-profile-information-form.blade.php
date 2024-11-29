@@ -9,6 +9,9 @@
         </p>
     </header>
 
+    <x-error-message/>
+    <x-succes-message/>
+
     <form id="send-verification" method="post" action="{{ route('verification.send') }}">
         @csrf
     </form>
@@ -47,20 +50,28 @@
             @endif
         </div>
 
+        <!-- Phone -->
+        <x-form-text name="phone" label="Phone" :value="$user->phone" />
+
+
+        <!-- Links -->
+        <x-form-text name="github_link" label="GitHub" :value="$user->github_link" />
+        <x-form-text name="linkedin_link" label="Linkedin" :value="$user->linkedin_link" />
+        <x-form-text name="resume_link" label="Resume" :value="$user->resume_link" />
+
+        <!-- Description -->
+        <x-form-text-area 
+            id="about_me" 
+            name="about_me" 
+            label="About Me" 
+            :value="$user->about_me" 
+            rows="6" 
+        />
+
         <x-profile-image-upload/>
 
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Save') }}</x-primary-button>
-
-            @if (session('status') === 'profile-updated')
-                <p
-                    x-data="{ show: true }"
-                    x-show="show"
-                    x-transition
-                    x-init="setTimeout(() => show = false, 2000)"
-                    class="text-sm text-gray-600 dark:text-gray-400"
-                >{{ __('Saved.') }}</p>
-            @endif
         </div>
     </form>
 </section>
