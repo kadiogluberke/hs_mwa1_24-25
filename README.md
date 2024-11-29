@@ -5,7 +5,7 @@ Example project for the BCN MWA 1 class of 2024-25
 - [bluePundit](https://bluepundit.eu) - Nico Deblauwe ([@ndeblauw](https://www.github.com/ndeblauw))
 
 ## Author 
-- [portfolio](https://berkekadioglu.harbourspace.site/) :smile: - Berke Kadioglu ([@kadiogluberke](https://github.com/kadiogluberke))
+- [demo](https://berkekadioglu.harbourspace.site/) :smile: - Berke Kadioglu ([@kadiogluberke](https://github.com/kadiogluberke))
 
 ## Requirements
 This project uses
