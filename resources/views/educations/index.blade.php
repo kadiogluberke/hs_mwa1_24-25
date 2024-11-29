@@ -27,7 +27,7 @@
 
             <!-- Description -->
             <div class="text-sm text-gray-600 mt-3">
-                {{ Str::limit($education->description, 220, '...') }}
+                {{ Str::limit($education->description, 120, '...') }}
             </div>
 
             <div class="mt-4">

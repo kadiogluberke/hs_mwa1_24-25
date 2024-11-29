@@ -24,7 +24,7 @@
     
             <!-- Description -->
             <div class="text-sm text-gray-600 mt-2">
-                {{ Str::limit($work->description, 220, '...') }}
+                {{ Str::limit($work->description, 120, '...') }}
             </div>
     
             <!-- Tasks -->
@@ -32,7 +32,7 @@
                 {{-- <div class="text-sm text-gray-700 font-semibold mb-1">Tasks:</div> --}}
                 <ul class="list-disc pl-7 text-sm text-gray-600">
                     @foreach($work->tasks as $task)
-                        <li>{{ Str::limit($task->description, 20, '...') }}</li>
+                        <li>{{ Str::limit($task->description, 120, '...') }}</li>
                     @endforeach
                 </ul>
             </div>
