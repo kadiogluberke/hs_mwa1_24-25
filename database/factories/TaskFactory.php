@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use \App\Models\Work;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -20,7 +19,7 @@ class TaskFactory extends Factory
         return [
             'name' => $this->faker->word(),
             'description' => $this->faker->sentence(),
-            'work_id' => fake()->numberBetween(1,5),
+            'work_id' => fake()->numberBetween(1, 5),
         ];
     }
 }

@@ -28,11 +28,11 @@ class Skill extends Model
 
     public function articles()
     {
-        return $this->belongsToMany(Article::class,'article_skill');
+        return $this->belongsToMany(Article::class, 'article_skill');
     }
 
     public function projects()
     {
-        return $this->belongsToMany(Project::class,'project_skill');
+        return $this->belongsToMany(Project::class, 'project_skill');
     }
 }

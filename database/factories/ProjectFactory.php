@@ -17,11 +17,11 @@ class ProjectFactory extends Factory
     public function definition(): array
     {
         return [
-            "name"=> fake()->sentence(),
-            'description'=> fake()->realText(300),
-            "link"=> fake()->url(),
-            "started_at"=> fake()->dateTimeBetween('-5 year', '-2 year'),
-            'finished_at'=> fake()->dateTimeBetween('-1 year','now'),
+            'name' => fake()->sentence(),
+            'description' => fake()->realText(300),
+            'link' => fake()->url(),
+            'started_at' => fake()->dateTimeBetween('-5 year', '-2 year'),
+            'finished_at' => fake()->dateTimeBetween('-1 year', 'now'),
         ];
     }
 }

@@ -13,10 +13,9 @@ class Task extends Model
 
     protected $guarded = [];
 
-
     public function skills()
     {
-        return $this->belongsToMany(Skill::class, "skill_task");
+        return $this->belongsToMany(Skill::class, 'skill_task');
     }
 
     public function work()

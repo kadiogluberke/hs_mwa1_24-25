@@ -4,8 +4,8 @@ namespace App\View\Components;
 
 use Closure;
 use Illuminate\Contracts\View\View;
-use Illuminate\View\Component;
 use Illuminate\Support\Carbon;
+use Illuminate\View\Component;
 
 class FormText extends Component
 {
@@ -13,12 +13,16 @@ class FormText extends Component
      * Create a new component instance.
      */
     public $type;
+
     public $name;
+
     public $value;
+
     public string $label;
+
     public ?string $placeholder = null;
 
-    public function __construct($type = 'text', $name = null, $value = null, $label = null, $placeholder = null)   
+    public function __construct($type = 'text', $name = null, $value = null, $label = null, $placeholder = null)
     {
         $this->type = $type;
         $this->name = $name;

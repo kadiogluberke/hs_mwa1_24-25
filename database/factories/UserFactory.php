@@ -29,11 +29,11 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
-            'phone'=> strval(fake()->numberBetween(100000000,999999999)),
-            "github_link"=> fake()->url(),
-            "linkedin_link"=> fake()->url(),
-            "resume_link"=> fake()->url(),
-            "about_me"=> fake()->realText(700),
+            'phone' => strval(fake()->numberBetween(100000000, 999999999)),
+            'github_link' => fake()->url(),
+            'linkedin_link' => fake()->url(),
+            'resume_link' => fake()->url(),
+            'about_me' => fake()->realText(700),
         ];
     }
 

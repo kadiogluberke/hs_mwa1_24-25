@@ -9,13 +9,13 @@ use Illuminate\View\Component;
 class ActionButtons extends Component
 {
     public $type;       // The type of resource (e.g., 'education', 'work')
+
     public $item;       // The model instance (e.g., $education or $work)
 
     /**
      * Create a new component instance.
      *
-     * @param string $type
-     * @param mixed $item
+     * @param  mixed  $item
      */
     public function __construct(string $type, $item)
     {

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Work;
 use App\Models\Skill;
+use App\Models\Work;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Carbon\Carbon;
 
 class WorkController extends Controller
 {
@@ -18,9 +18,11 @@ class WorkController extends Controller
         $works = Work::all()->sortByDesc('started_at')->map(function ($work) {
             $work->started_at = Carbon::parse($work->started_at)->format('M - Y');
             $work->finished_at = Carbon::parse($work->finished_at)->format('M - Y');
+
             return $work;
         });
         $works->load('skills', 'tasks');
+
         return view('works.index', compact('works'));
     }
 
@@ -30,6 +32,7 @@ class WorkController extends Controller
     public function create()
     {
         $skills = Skill::all();
+
         return view('works.create', compact('skills'));
     }
 
@@ -38,7 +41,7 @@ class WorkController extends Controller
      */
     public function store(Request $request)
     {
-        if (!Auth::check()) {
+        if (! Auth::check()) {
             abort(403); // Forbidden
         }
 
@@ -53,7 +56,6 @@ class WorkController extends Controller
             'task_description' => ['nullable', 'string'],
         ]);
 
-
         // Create Work
         $work = Work::create($request->except('skills', 'task_name', 'task_description'));
 
@@ -61,7 +63,6 @@ class WorkController extends Controller
         if ($request->has('skills')) {
             $work->skills()->attach($request->skills);
         }
-
 
         $work->tasks()->create([
             'name' => $request->task_name,
@@ -81,6 +82,7 @@ class WorkController extends Controller
         $work->finished_at = Carbon::parse($work->finished_at)->format('M - Y');
 
         $work->load('skills', 'tasks');
+
         return view('works.show', compact('work'));
     }
 
@@ -89,10 +91,11 @@ class WorkController extends Controller
      */
     public function edit(string $id)
     {
-        $work = Work::findOrFail($id); 
-        $skills = Skill::all(); 
-        $work->load(['skills', 'tasks']); 
-        return view('works.edit', compact('work', 'skills')); 
+        $work = Work::findOrFail($id);
+        $skills = Skill::all();
+        $work->load(['skills', 'tasks']);
+
+        return view('works.edit', compact('work', 'skills'));
     }
 
     /**
@@ -100,7 +103,7 @@ class WorkController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        if (!Auth::check()) {
+        if (! Auth::check()) {
             abort(403); // Forbidden
         }
 
@@ -132,7 +135,7 @@ class WorkController extends Controller
      */
     public function destroy(string $id)
     {
-        if (!Auth::check()) {
+        if (! Auth::check()) {
             abort(403); // Forbidden
         }
 

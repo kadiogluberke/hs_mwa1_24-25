@@ -11,7 +11,6 @@ class Project extends Model
 
     protected $fillable = [];
 
-
     public function skills()
     {
         return $this->belongsToMany(Skill::class, 'project_skill');

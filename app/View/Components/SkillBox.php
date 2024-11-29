@@ -4,15 +4,18 @@ namespace App\View\Components;
 
 use Closure;
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\Collection;
 use Illuminate\View\Component;
 
 class SkillBox extends Component
 {
     public $skills;         // List of all skills
+
     public $selectedSkills; // Selected skills
+
     public $label;          // Label text
+
     public $name;           // Input name
+
     public $id;             // Input ID
 
     /**

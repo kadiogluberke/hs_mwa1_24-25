@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Http\Request;
 
 class WellcomeController extends Controller
 {
@@ -15,6 +14,7 @@ class WellcomeController extends Controller
         } else {
             $image = asset('images/default.webp');
         }
+
         //return view('welcome')->with('user', $user);
         return view('welcome', compact('user', 'image'));
     }

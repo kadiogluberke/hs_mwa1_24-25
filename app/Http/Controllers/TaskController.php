@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Skill;
 use App\Models\Task;
 use App\Models\Work;
-use App\Models\Skill;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,6 +16,7 @@ class TaskController extends Controller
     public function index()
     {
         $tasks = Task::with('work')->get();
+
         return view('tasks.index', compact('tasks'));
     }
 
@@ -24,16 +25,16 @@ class TaskController extends Controller
      */
     public function create(Request $request)
     {
-        if (!($request->has('work_id'))){
-            if (!Auth::check()) {
-                abort(404); 
+        if (! ($request->has('work_id'))) {
+            if (! Auth::check()) {
+                abort(404);
             }
         }
 
-        $works = Work::all(); 
-        $skills = Skill::all(); 
+        $works = Work::all();
+        $skills = Skill::all();
 
-        $workId = $request->get('work_id'); 
+        $workId = $request->get('work_id');
         $work = Work::findOrFail($workId);
 
         return view('tasks.create', compact('works', 'workId', 'skills', 'work'));
@@ -44,7 +45,7 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        if (!Auth::check()) {
+        if (! Auth::check()) {
             abort(403); // Forbidden
         }
 
@@ -54,16 +55,15 @@ class TaskController extends Controller
             'work_id' => 'required|exists:works,id',
         ]);
 
-
         $task = Task::create($request->except('skills'));
-    
+
         // Attach Skills (if any are selected)
         if ($request->has('skills')) {
             $task->skills()->attach($request->skills);
         }
 
         return redirect()->route('works.edit', $request->work_id)
-                     ->with('success', 'Task added successfully!');
+            ->with('success', 'Task added successfully!');
     }
 
     /**
@@ -72,6 +72,7 @@ class TaskController extends Controller
     public function show(string $id)
     {
         $task = Task::with('work')->findOrFail($id); // Include the related Work model
+
         return view('tasks.show', compact('task'));
     }
 
@@ -82,10 +83,10 @@ class TaskController extends Controller
     {
         $task = Task::findOrFail($id);
         $workId = $task->work_id;
-        $work = Work::findOrFail($workId); 
+        $work = Work::findOrFail($workId);
         $skills = Skill::all();
 
-        return view('tasks.edit', compact('task', 'work', 'workId','skills'));
+        return view('tasks.edit', compact('task', 'work', 'workId', 'skills'));
     }
 
     /**
@@ -93,7 +94,7 @@ class TaskController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        if (!Auth::check()) {
+        if (! Auth::check()) {
             abort(403); // Forbidden
         }
 
@@ -113,9 +114,8 @@ class TaskController extends Controller
             $task->skills()->sync([]);
         }
 
-        
         return redirect()->route('works.edit', $request->work_id)
-                        ->with('success', 'Task updated successfully!');
+            ->with('success', 'Task updated successfully!');
     }
 
     /**
@@ -123,13 +123,13 @@ class TaskController extends Controller
      */
     public function destroy(string $id)
     {
-        if (!Auth::check()) {
+        if (! Auth::check()) {
             abort(403); // Forbidden
         }
 
         $task = Task::findOrFail($id);
         $workId = $task->work_id;
-        $work = Work::findOrFail($workId); 
+        $work = Work::findOrFail($workId);
         $task->delete();
 
         return redirect()->route('works.edit', $workId)->with('success', 'Task deleted successfully!');

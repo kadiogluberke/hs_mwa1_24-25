@@ -13,16 +13,13 @@ class Work extends Model
 
     protected $guarded = [];
 
-
     public function skills()
     {
-        return $this->belongsToMany(Skill::class, "skill_work");
+        return $this->belongsToMany(Skill::class, 'skill_work');
     }
 
     public function tasks()
     {
         return $this->hasMany(Task::class);
     }
-
-
 }

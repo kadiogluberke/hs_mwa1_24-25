@@ -1,12 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Education;
 use App\Models\Skill;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Carbon\Carbon;
-
 
 class EducationController extends Controller
 {
@@ -18,9 +18,11 @@ class EducationController extends Controller
         $educations = Education::all()->sortByDesc('started_at')->map(function ($education) {
             $education->started_at = Carbon::parse($education->started_at)->format('M - Y');
             $education->finished_at = Carbon::parse($education->finished_at)->format('M - Y');
+
             return $education;
         });
         $educations->load('skills');
+
         return view('educations.index', compact('educations'));
     }
 
@@ -30,6 +32,7 @@ class EducationController extends Controller
     public function create()
     {
         $skills = Skill::all();
+
         return view('educations.create', compact('skills'));
     }
 
@@ -39,7 +42,7 @@ class EducationController extends Controller
     public function store(Request $request)
     {
 
-        if (!Auth::check()) {
+        if (! Auth::check()) {
             abort(403); // Forbidden
         }
 
@@ -54,15 +57,15 @@ class EducationController extends Controller
             'description' => 'nullable|string',
             'grade' => 'nullable|string|max:10',
         ]);
-    
+
         // Create Education
         $education = Education::create($request->except('skills'));
-    
+
         // Attach Skills (if any are selected)
         if ($request->has('skills')) {
             $education->skills()->attach($request->skills);
         }
-    
+
         return redirect()->route('educations.index')->with('success', 'Education added successfully!');
     }
 
@@ -76,6 +79,7 @@ class EducationController extends Controller
         $education->finished_at = Carbon::parse($education->finished_at)->format('M - Y');
 
         $education->load('skills');
+
         return view('educations.show', compact('education'));
     }
 
@@ -87,6 +91,7 @@ class EducationController extends Controller
         $education = Education::findOrFail($id);
         $skills = Skill::all();
         $education->load('skills');
+
         return view('educations.edit', compact('education', 'skills'));
     }
 
@@ -95,7 +100,7 @@ class EducationController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        if (!Auth::check()) {
+        if (! Auth::check()) {
             abort(403); // Forbidden
         }
 
@@ -128,7 +133,7 @@ class EducationController extends Controller
      */
     public function destroy(string $id)
     {
-        if (!Auth::check()) {
+        if (! Auth::check()) {
             abort(403); // Forbidden
         }
 

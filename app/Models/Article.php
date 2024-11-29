@@ -11,9 +11,8 @@ class Article extends Model
 
     protected $fillable = [];
 
-
     public function skills()
     {
-        return $this->belongsToMany(Skill::class,"article_skill");
+        return $this->belongsToMany(Skill::class, 'article_skill');
     }
 }

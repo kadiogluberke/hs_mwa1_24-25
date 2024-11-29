@@ -17,10 +17,10 @@ class ArticleFactory extends Factory
     public function definition(): array
     {
         return [
-            "title"=> fake()->sentence(),
-            'content'=> fake()->realText(700),
-            "published_at"=> fake()->dateTimeBetween('-1 year', 'now'),
-            "link"=> fake()->url(),
+            'title' => fake()->sentence(),
+            'content' => fake()->realText(700),
+            'published_at' => fake()->dateTimeBetween('-1 year', 'now'),
+            'link' => fake()->url(),
         ];
     }
 }

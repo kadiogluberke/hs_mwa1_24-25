@@ -14,7 +14,6 @@ class Education extends Model
 
     public function skills()
     {
-        return $this->belongsToMany(Skill::class, "education_skill");
+        return $this->belongsToMany(Skill::class, 'education_skill');
     }
-
 }

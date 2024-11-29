@@ -9,7 +9,6 @@ use Illuminate\Notifications\Notifiable;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
-use Spatie\MediaLibrary\MediaCollections\File;
 
 class User extends Authenticatable implements HasMedia
 {
@@ -28,7 +27,7 @@ class User extends Authenticatable implements HasMedia
     // ];
 
     protected $guarded = [
-        
+
     ];
 
     /**
@@ -54,11 +53,11 @@ class User extends Authenticatable implements HasMedia
         ];
     }
 
-    public function registerMediaConversions(Media $media = null): void
+    public function registerMediaConversions(?Media $media = null): void
     {
         $this->addMediaConversion('thumb')
-             ->width(300)
-             ->height(300)
-             ->sharpen(10);
+            ->width(300)
+            ->height(300)
+            ->sharpen(10);
     }
 }

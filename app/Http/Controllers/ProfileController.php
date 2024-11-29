@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
-use App\Models\User;
 
 class ProfileController extends Controller
 {
@@ -35,7 +35,7 @@ class ProfileController extends Controller
         }
 
         $request->validate([
-            'profile_picture' => ['nullable','file','image','mimes:jpg,jpeg,png','max:4096'],
+            'profile_picture' => ['nullable', 'file', 'image', 'mimes:jpg,jpeg,png', 'max:4096'],
         ]);
 
         /** @var \App\Models\User $user */

@@ -9,10 +9,15 @@ use Illuminate\View\Component;
 class FormTextArea extends Component
 {
     public $id;
+
     public $name;
+
     public $label;
+
     public $rows;
+
     public $placeholder;
+
     public $value;
 
     public function __construct(

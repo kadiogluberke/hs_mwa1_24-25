@@ -33,7 +33,7 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'profile_picture' => ['nullable','file','image','mimes:jpg,jpeg,png','max:4096'],
+            'profile_picture' => ['nullable', 'file', 'image', 'mimes:jpg,jpeg,png', 'max:4096'],
         ]);
 
         $user = User::create([
@@ -46,7 +46,6 @@ class RegisteredUserController extends Controller
             $user->media->first()?->delete();
             $user->addMediaFromRequest('profile_picture')->toMediaCollection('profile_picture');
         }
-
 
         event(new Registered($user));
 

@@ -9,7 +9,9 @@ use Illuminate\View\Component;
 class ActionLayoutEdit extends Component
 {
     public $action;
+
     public $title;
+
     /**
      * Create a new component instance.
      */
