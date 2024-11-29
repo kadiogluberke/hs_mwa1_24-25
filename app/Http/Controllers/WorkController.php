@@ -15,7 +15,7 @@ class WorkController extends Controller
      */
     public function index()
     {
-        $works = Work::all()->map(function ($work) {
+        $works = Work::all()->sortByDesc('started_at')->map(function ($work) {
             $work->started_at = Carbon::parse($work->started_at)->format('M - Y');
             $work->finished_at = Carbon::parse($work->finished_at)->format('M - Y');
             return $work;

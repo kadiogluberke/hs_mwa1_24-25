@@ -15,7 +15,7 @@ class EducationController extends Controller
      */
     public function index()
     {
-        $educations = Education::all()->map(function ($education) {
+        $educations = Education::all()->sortByDesc('started_at')->map(function ($education) {
             $education->started_at = Carbon::parse($education->started_at)->format('M - Y');
             $education->finished_at = Carbon::parse($education->finished_at)->format('M - Y');
             return $education;
