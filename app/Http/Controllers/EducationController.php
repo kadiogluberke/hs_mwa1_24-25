@@ -17,7 +17,9 @@ class EducationController extends Controller
     {
         $educations = Education::all()->sortByDesc('started_at')->map(function ($education) {
             $education->started_at = Carbon::parse($education->started_at)->format('M - Y');
-            $education->finished_at = Carbon::parse($education->finished_at)->format('M - Y');
+            if ($education->finished_at !== null) {
+                $education->finished_at = Carbon::parse($education->finished_at)->format('M - Y');
+            }
 
             return $education;
         });
@@ -76,7 +78,9 @@ class EducationController extends Controller
     {
         $education = Education::findOrFail($id);
         $education->started_at = Carbon::parse($education->started_at)->format('M - Y');
-        $education->finished_at = Carbon::parse($education->finished_at)->format('M - Y');
+        if ($education->finished_at !== null) {
+            $education->finished_at = Carbon::parse($education->finished_at)->format('M - Y');
+        }
 
         $education->load('skills');
 

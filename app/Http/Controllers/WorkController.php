@@ -17,7 +17,9 @@ class WorkController extends Controller
     {
         $works = Work::all()->sortByDesc('started_at')->map(function ($work) {
             $work->started_at = Carbon::parse($work->started_at)->format('M - Y');
-            $work->finished_at = Carbon::parse($work->finished_at)->format('M - Y');
+            if ($work->finished_at !== null) {
+                $work->finished_at = Carbon::parse($work->finished_at)->format('M - Y');
+            }
 
             return $work;
         });
@@ -79,8 +81,9 @@ class WorkController extends Controller
     {
         $work = Work::findOrFail($id);
         $work->started_at = Carbon::parse($work->started_at)->format('M - Y');
-        $work->finished_at = Carbon::parse($work->finished_at)->format('M - Y');
-
+        if ($work->finished_at !== null) {
+            $work->finished_at = Carbon::parse($work->finished_at)->format('M - Y');
+        }
         $work->load('skills', 'tasks');
 
         return view('works.show', compact('work'));
