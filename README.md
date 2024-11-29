@@ -44,7 +44,7 @@ Nothing but the normal ones
 
 ## Bugs 
 There are small bugs in the website 
-- Grade label is displayed whether there is a grade or not. 
-- If Finish Date is empty, it takes 'Present' string but because of casting it seems as present's date
+- Grade label is displayed whether there is a grade or not.  -->  [fix](https://github.com/kadiogluberke/hs_mwa1_24-25/commit/297f3a4b8c6e5fda7c1ae4dba49f86c2835960c7) 
+- If Finish Date is empty, it takes 'Present' string but because of casting it seems as present's date --> [fix](https://github.com/kadiogluberke/hs_mwa1_24-25/commit/acbe9472aca39571600e72f02e4f1d86a0ee6c12)
 - When you return to work edit from after editing, creating or deleting tasks, there will be no flash 
 - Work Edit Form quite strange because of Html does not allow Nested Forms 
