@@ -1,5 +1,6 @@
-# personal portfolio project
-Example project for the BCN MWA 1 class of 2024-25
+# Personal Portfolio Website
+
+Project for the BCN MWA 1 class of 2024-25
 
 ## Instructor 
 - [bluePundit](https://bluepundit.eu) - Nico Deblauwe ([@ndeblauw](https://www.github.com/ndeblauw))
