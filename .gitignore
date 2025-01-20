@@ -22,4 +22,6 @@ yarn-error.log
 /.zed
 **/.DS_Store
 venv_activate.txt
+.env.prod
+
 
