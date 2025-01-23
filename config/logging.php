@@ -127,6 +127,11 @@ return [
             'path' => storage_path('logs/laravel.log'),
         ],
 
+        'flare' => [
+            'driver' => 'flare',
+            'level' => 'critical', // The minimum log level to send to Flare
+        ],
+
     ],
 
 ];
