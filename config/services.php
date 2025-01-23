@@ -35,4 +35,11 @@ return [
         ],
     ],
 
+    'mailgun' => [
+        'domain' => env('MAILGUN_DOMAIN'),
+        'secret' => env('MAILGUN_SECRET'),
+        'endpoint' => env('MAILGUN_ENDPOINT', 'smtp.eu.mailgun.org'),
+        'scheme' => 'https',
+    ],
+
 ];
