@@ -1,5 +1,7 @@
 <x-site-layout title='Berke Kadıoğlu'>
 
+    <x-advice/>
+
     <section class="mb-8 flex flex-col md:flex-row items-center md:items-start md:space-x-8">
         <!-- Profile Picture -->
         <div class="flex-shrink-0">
