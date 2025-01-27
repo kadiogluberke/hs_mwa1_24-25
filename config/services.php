@@ -42,4 +42,8 @@ return [
         'scheme' => 'https',
     ],
 
+    'adviceslip' => [
+        'endpoint' => 'https://api.adviceslip.com/advice',
+    ],
+
 ];
