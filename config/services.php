@@ -1,5 +1,8 @@
 <?php
 
+use App\Services\AdviceService;
+use App\Services\JokeService;
+
 return [
 
     /*
@@ -41,6 +44,12 @@ return [
         'endpoint' => env('MAILGUN_ENDPOINT', 'smtp.eu.mailgun.org'),
         'scheme' => 'https',
     ],
+
+    'quote' => match (env('QUOTE_SERVICE', 'advice')) {
+        'advice' => AdviceService::class,
+        'joke' => JokeService::class,
+        default => 'advice',
+    },
 
     'adviceslip' => [
         'endpoint' => 'https://api.adviceslip.com/advice',
