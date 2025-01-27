@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\View\Component;
 use App\Services\QuoteService;
 
-class Advice extends Component
+class Quote extends Component
 {
     public function __construct()
     {
@@ -16,12 +16,12 @@ class Advice extends Component
     }
         public function render(): View|Closure|string
     {
-        $advice = cache()->remember(
-            'advice',
+        $quote = cache()->remember(
+            'quote',
             5,
-            fn () => (new QuoteService())::init()->getAdvice()
+            fn () => (new QuoteService())::init()->getQuote()
         );
        
-        return view('components.advice', compact('advice'));
+        return view('components.quote', compact('quote'));
     }
 }
