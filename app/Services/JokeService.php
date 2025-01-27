@@ -1,12 +1,12 @@
 <?php
 namespace App\Services;
 use Illuminate\Support\Facades\Http;
-class AdviceService implements AdviceServiceInterface
+class JokeService implements AdviceServiceInterface
 {
     protected string $endpoint;
     public function __construct()
     {
-        $this->endpoint = config('services.adviceslip.endpoint', '');
+        $this->endpoint = config('services.dadjoke.endpoint', '');
     }
     public function getAdvice(): mixed
     {
@@ -16,7 +16,7 @@ class AdviceService implements AdviceServiceInterface
             ])->get($this->endpoint);
             if ($response->successful()) {
                 
-                $advice = json_decode($response->body())->slip->advice;
+                $advice = json_decode($response->body())->joke;
                 
             } else {
                 throw new \Exception;

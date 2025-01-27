@@ -46,4 +46,8 @@ return [
         'endpoint' => 'https://api.adviceslip.com/advice',
     ],
 
+    'dadjoke' => [
+        'endpoint' => 'https://icanhazdadjoke.com/',
+    ],
+
 ];
