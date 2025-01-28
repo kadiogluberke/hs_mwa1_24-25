@@ -43,7 +43,7 @@ This example requires updating your template:
         <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
             <div class="flex items-center space-x-4">
                 <h1 class="text-3xl font-bold tracking-tight text-gray-900">{{$title ?? 'unknown' }}</h1>
-                <h2 class="text-xl italic text-gray-500"><x-quote/></h2>
+                <h2 class="text-xl italic text-gray-500"><livewire:quote-dynamic/></h2>
             </div>
         </div>
     </header>
