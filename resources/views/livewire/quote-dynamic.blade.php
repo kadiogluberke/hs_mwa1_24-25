@@ -7,8 +7,6 @@
             {{$quote}}
         @endif
 
-        {{-- <a wire:click="newquote()" class="bg-pink-100 text-pink-500 p-2 mt-2 rounded cursor-pointer">New quote</a> --}}
-
         <!-- Refresh Button -->
         <button wire:click="newquote()" 
             class="text-gray-500 p-2">
