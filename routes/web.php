@@ -4,6 +4,7 @@ use App\Http\Controllers\EducationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\WorkController;
+use App\Http\Controllers\SkillController;
 use Illuminate\Support\Facades\Route;
 
 require __DIR__.'/auth.php';
@@ -22,6 +23,9 @@ Route::resource('works', WorkController::class)
 Route::resource('tasks', TaskController::class)
     ->except(['index', 'show'])
     ->middleware('auth');
+
+Route::resource('skills', SkillController::class)
+->middleware('auth');
 
 // Public actions
 Route::get('educations', [EducationController::class, 'index'])->name('educations.index');
