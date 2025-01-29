@@ -26,7 +26,6 @@ test('profile information can be updated', function () {
             'email' => 'test_@example.com',
         ]);
 
-    ray($response)->blue();
 
     $response
         ->assertSessionHasNoErrors()
