@@ -4,6 +4,7 @@ test('there is no register route', function () {
     $response = $this->get('/register');
 
     $response->assertStatus(404);
+    
 });
 
 // test('new users can register', function () {
