@@ -25,7 +25,7 @@
             <li><strong>Email:</strong> <a href="mailto:{{ $user->email }}" class="text-blue-500 underline">{{ $user->email }}</a></li>
             <li><strong>GitHub:</strong> <a href="{{ $user->github_link }}" target="_blank" class="text-blue-500 underline">{{ $user->github_link }}</a></li>
             <li><strong>LinkedIn:</strong> <a href="{{ $user->linkedin_link }}" target="_blank" class="text-blue-500 underline">{{ $user->linkedin_link }}</a></li>
-            <li><strong>Resume:</strong> <a href="{{ $user->resume_link }}" target="_blank" class="text-blue-500 underline">View Resume</a></li>
+            {{-- <li><strong>Resume:</strong> <a href="{{ $user->resume_link }}" target="_blank" class="text-blue-500 underline">View Resume</a></li> --}}
         </ul>
     </section>
     
