@@ -29,8 +29,9 @@ jobs:
         mkdir -p database
         touch database/database.sqlite
     - name: npm Install 
-      run: npm install --no-save
-           npm run build 
+      run: npm install 
+    - name: npm Build
+      run: npm run build 
     - name: Execute tests (Unit and Feature tests) via PHPUnit/Pest
       env:
         APP_ENV: testing
